@@ -12,7 +12,9 @@ export default class App extends Component {
         confirmed: 0,
         recovered: 0,
         deaths: 0,
-        countries: []
+        countries: [],
+        image: "",
+        lastUpdate: ""
     }
 
     componentDidMount(){ 
@@ -23,6 +25,7 @@ export default class App extends Component {
         const res = await Axios.get("https://covid19.mathdro.id/api");
         const resCountry = await Axios.get("https://covid19.mathdro.id/api/countries");
         const countries = [];
+        const image = res.data.image;
         for(var i = 0; i<resCountry.data.countries.length;i++){
             countries.push(resCountry.data.countries[i].name)
         }
@@ -30,8 +33,11 @@ export default class App extends Component {
             confirmed: res.data.confirmed.value,
             recovered: res.data.recovered.value,
             deaths: res.data.deaths.value,  
-            countries
+            countries,
+            image: image,
+            lastUpdate: res.data.lastUpdate          
         })
+        
     }
     async getCountryData(e){
         if(e.target.value === "WorldWide"){
@@ -43,6 +49,7 @@ export default class App extends Component {
             recovered: res.data.recovered.value,
             deaths: res.data.deaths.value
         })
+        
     }
     renderCountryOptions(){
             return this.state.countries.map((country, i) => {
@@ -55,7 +62,8 @@ export default class App extends Component {
         return (
             
             <div className="container">
-                <h1>COVID-19 Update</h1>
+                <h1 className="title">COVID-19 CORONAVIRUS PANDEMIC</h1>
+                <h3 className="subtitle">Last Update: {this.state.lastUpdate}</h3>
                 <select className="dropdown" onChange={this.getCountryData}>
                     <option>WorldWide</option>
                     {this.renderCountryOptions()}
@@ -73,6 +81,9 @@ export default class App extends Component {
                         <h2>Deaths</h2>
                         <h3>{this.state.deaths}</h3>
                     </div>
+                </div>
+                <div>
+                        <img src={this.state.image} alt="dash" className="image"/>
                 </div>
             </div>
             
