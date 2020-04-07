@@ -70,11 +70,11 @@ Code:</br>
 
 ## Features
 List of features ready and TODOs for future development
-* Rooms features
-* Rooms details
-* Responsive
-* All sizes of rooms, from 1 to 10 people
-* Info of every room
+* Check cases
+* Confirmed cases
+* Recovered cases
+* Deaths
+* Graph
 
 To-do list:
 * none
@@ -83,7 +83,7 @@ To-do list:
 Project is: _finished_
 
 ## Inspiration
-Credits: [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ)
+Credits: [mathdroid](https://github.com/mathdroid/covid-19-api) for an awesome api
 
 ## Contact
 Created by [Marko Vitkovic](https://github.com/MarkoVitkovic) - feel free to contact me!
